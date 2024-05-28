@@ -22,7 +22,7 @@ public class contactGbg {
     @Given("I want to contact gbg office")
     public void i_want_to_contact_gbg_office() {
         driver = new FirefoxDriver();
-        driver.get("https://iths.see");
+        driver.get("https://iths.se");
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 

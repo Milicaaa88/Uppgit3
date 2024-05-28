@@ -36,7 +36,7 @@ public class breadcrumbs {
 
     @Then("Page should have breadcrumbs")
     public void page_should_have_breadcrumbs() {
-        WebElement contactGbg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Kontakt Göteborg']")));
+        WebElement contactGbg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Kontakt Geteborg']")));
         Assertions.assertTrue(contactGbg.isDisplayed(), "The 'Kontakt Göteborg' h2 tag is not visible.");
     }
 
