@@ -1,11 +1,10 @@
 name: CI for Spring Application
 
-on: 
+on:
   push:
-    branches:
-      - main
-      - 'feature/*'
-      - 'bugfix/*'
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -13,24 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
+    - uses: actions/checkout@v4
     - name: Set up JDK 22
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v3
       with:
         java-version: '22'
-
-    - name: Cache Maven packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-maven
-
+        distribution: 'temurin'
+        cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    - name: Run tests
-      run: mvn test
-
